@@ -1,0 +1,306 @@
+<!--Web test by Honoka Imahashi-Such-->
+<!--No previous experience in HTML as I just started learning HTML at university-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Article ranking</title>
+<meta name="viewpoint" content="width=device-width, initial-scale=1">
+<style>
+body {front-family: Arial;}
+
+<h1>Article Ranking</h1>
+
+.tab {
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-colour: #f1f1f1;
+}
+
+.tab button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+}
+
+.tab button:hover {
+	background-color: #FFE2BC;
+}
+
+.tab button.active {
+	background-color: #F6B35C;
+}
+
+.tabcontent {
+	display:none; 
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+}
+
+.button {
+  background-color: #F6B35C; /* Green */
+  color: white;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body onload="document.getElementById('defaultOpen').click();">
+
+<div class="tab">
+  <button class="tablinks" onclick="openArticle(event, 'Article1')" id="defaultOpen">Lorem ipsum dolor sit amet, </br>consectetur adipiscing elit</button>
+  <button class="tablinks" onclick="openArticle(event, 'Article2')" id="second">Praesent bibendum nec velit a fringilla. </br> Nulla facilisi</button>
+  <button class="tablinks" onclick="openArticle(event, 'Article3')" id="third">Vestibulum posuere orci ullamcorper nisi porta, </br> sit amet tempus nibh porta</button>
+  <button class="tablinks" onclick="openArticle(event, 'Ranking')", id="yourRanking">Submit ranking </br> </button>
+</div>
+
+<!-- Tab content -->
+<div id="Article1" class="tabArticle">
+ </br>
+ </br>
+ </br>
+<h1 id = "heading1"></h1>
+<p id = "paragraph1"></p>
+<img src = "https://picsum.photos/640/420/?random" alt = "Vestibulum pellentesque laoreet urna, eget dignissim lorem maximus vel"
+	height = 420 width = 640> 
+<p id = "paragraph2"></p>
+<p id = "paragraph3"></p>
+<ul = "list-style-type:disc;">
+	<li>Vestibulum viverra viverra ullamcorper</li>
+	<li>Aenean ut felis hendrerit</li>
+	<li>scelerisque est sed, rhoncus sem</li>
+</ul>
+</br>
+<button class="button" id="button1" onclick="openArticle(event, 'Article2', 'second')">Next Article</button>
+
+<script>
+var json = {
+  "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  "body": [
+    {"type": "heading","model": {"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"}},
+    {"type": "paragraph","model": {
+		"text": "Etiam ornare nulla in sem pharetra, vel varius magna tempus. Praesent pulvinar eget dolor vitae elementum. Donec id velit at sem gravida tristique non vitae lorem."
+		}},
+    {"type": "image","model": {"url": "https://picsum.photos/640/420/?random",
+		"altText": "Vestibulum pellentesque laoreet urna, eget dignissim lorem maximus vel",
+		"height": "420","width": "640"}},
+    {"type": "paragraph","model": {
+		"text": "Nulla tortor nunc, posuere eu purus eget, ultricies ullamcorper sapien. Duis viverra lectus eget dolor gravida rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce molestie, odio at mattis auctor, mauris lectus luctus risus, eget pulvinar tortor erat a est."
+		}},
+    {"type": "paragraph","model": {
+		"text": "Mauris accumsan maximus enim, eleifend consectetur turpis molestie malesuada. Proin vulputate dui non mattis venenatis. Nam ornare sapien eget nibh placerat, faucibus dapibus lacus consectetur."
+		}},
+    {"type": "list","model": {"type": "unordered","items": ["Vestibulum viverra viverra ullamcorper",
+     "Aenean ut felis hendrerit, scelerisque est sed, rhoncus sem"]}}
+  ]
+};
+document.getElementById("heading1").innerHTML = json.body[0].model.text;
+document.getElementById("paragraph1").innerHTML = json.body[1].model.text;
+document.getElementById("paragraph2").innerHTML = json.body[3].model.text;
+document.getElementById("paragraph3").innerHTML = json.body[4].model.text;
+</script>
+</div>
+
+<div id="Article2" class="tabArticle">
+  </br>
+  </br>
+  </br>
+  <h1 id = "heading2"></h1>
+<img src = "https://picsum.photos/640/420/?random" alt = "Vestibulum pellentesque laoreet urna, eget dignissim lorem maximus vel"
+	height = 420 width = 640> 
+<p id = "paragraph4"></p>
+<p id = "paragraph5"></p>
+<img src = "https://picsum.photos/640/420/?random" alt = "Curabitur dictum leo bibendum lacus ultrices fringilla et quis justo"
+	height = 420 width = 640> 
+<p id = "paragraph6"></p>
+<img src = "https://picsum.photos/640/420/?random" alt = "Curabitur dictum leo bibendum lacus ultrices fringilla et quis justo"
+	height = 420 width = 640> 
+</br>
+<button class="button" id="button2" onclick="openArticle(event, 'Article3')">Next Article</button>
+<script>
+var json2 = {
+	"title": "Praesent bibendum nec velit a fringilla. Nulla facilisi",
+	"body": [
+		{"type": "heading","model": {"text": "Nam eu varius magna, vel molestie diam"}},
+		{"type": "image","model": {"url": "https://picsum.photos/640/420/?random",
+			"altText": "Vestibulum pellentesque laoreet urna, eget dignissim lorem maximus vel",
+			"height": "420","width": "640"}},
+		{"type": "paragraph","model": {
+			"text": "Integer lobortis, magna et tempor facilisis, arcu dui finibus mauris, pellentesque fringilla massa sem non justo. Phasellus vel arcu eu eros commodo egestas at non dui. Ut ultricies quis nunc ut commodo"
+		}},
+		{"type": "paragraph","model": {
+			"text": "Aenean justo urna, tempor vitae consectetur nec, ornare eget nunc. Duis ornare ipsum in quam auctor feugiat. Vestibulum sapien metus, rutrum et mattis ut, tincidunt in dolor. Praesent semper laoreet augue. Etiam lacinia hendrerit euismod."
+		}},
+		{"type": "image","model": {"url": "https://picsum.photos/640/420/?random",
+			"altText": "Curabitur dictum leo bibendum lacus ultrices fringilla et quis justo",
+			"height": "420","width": "640"}},
+		{"type": "paragraph","model": {
+			"text": "Morbi venenatis aliquam cursus. Sed eros elit, consequat id faucibus vel, interdum fringilla massa."
+		}},
+		{"type": "image","model": {"url": "https://picsum.photos/640/420/?random",
+			"altText": "Curabitur dictum leo bibendum lacus ultrices fringilla et quis justo",
+			"height": "420","width": "640"}},
+		{"type": "paragraph","model": {
+			"text": "Morbi venenatis aliquam cursus. Sed eros elit, consequat id faucibus vel, interdum fringilla massa."
+		}}
+	]
+};	
+document.getElementById("heading2").innerHTML = json2.body[0].model.text;
+document.getElementById("paragraph4").innerHTML = json2.body[2].model.text;
+document.getElementById("paragraph5").innerHTML = json2.body[3].model.text;
+document.getElementById("paragraph6").innerHTML = json2.body[5].model.text;
+</script>
+</div>
+
+<div id="Article3" class="tabArticle">
+</br>
+</br>
+</br>
+<h1 id = "heading3"></h1>
+<p id = "paragraph7"></p>
+<p id = "paragraph8"></p>
+<p id = "paragraph9"></p>
+<p id = "paragraph10"></p>
+<p id = "paragraph11"></p>
+<p id = "paragraph12"></p>
+<p id = "paragraph13"></p>
+<p id = "paragraph14"></p>
+</br>
+<button class="button" id="button3" onclick="openArticle(event, 'Ranking')">Rank Articles!!</button>
+<script>
+var json = {
+  "title": "Vestibulum posuere orci ullamcorper nisi porta, sit amet tempus nibh porta",
+  "body": [
+	{"type": "heading","model": {"text": "Donec est neque, vulputate vitae magna non, aliquam semper lectus"
+      }},
+    {"type": "paragraph","model": {
+        "text": "Nam sed tempus lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam sodales efficitur fermentum. Phasellus lacinia tempus odio, non mattis tellus pretium ac. Nulla facilisi. Donec tempor orci ipsum, eu euismod massa aliquet in. Fusce pretium lectus vitae dui pulvinar, vel fermentum elit porta."
+      }},
+    {"type": "paragraph","model": {
+        "text": "Donec iaculis volutpat consequat. Pellentesque et lobortis tellus. In mattis, diam a tempus fringilla, augue orci tincidunt nunc, et dictum lorem eros non ante."
+      }},
+    {"type": "paragraph","model": {
+        "text": "Cras dolor tellus, condimentum eu aliquet nec, facilisis a eros. Morbi sed tincidunt urna."
+      }},
+    {"type": "paragraph","model": {
+        "text": "Praesent feugiat rutrum lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae."
+      }},
+    {"type": "paragraph","model": {
+        "text": "In imperdiet commodo nisl nec iaculis. Vivamus nunc purus, vulputate eget dapibus in, mattis sit amet tellus. Donec quis sapien a odio vestibulum egestas vel a magna."
+      }},
+    {"type": "paragraph","model": {
+        "text": "Cras id condimentum dolor. Vestibulum risus leo, viverra a mi laoreet, vestibulum aliquam odio. Pellentesque aliquam placerat dolor vitae malesuada. Ut eget pretium tellus, cursus finibus ligula. Sed eros diam, porta sit amet urna eget, pretium dignissim magna. Curabitur imperdiet pharetra lectus ac venenatis."
+      }},
+    {"type": "paragraph","model": {
+        "text": "Donec at tincidunt mauris, id sagittis erat. Nunc mi nisi, pellentesque et rutrum quis, congue non elit. Nullam convallis sapien quis tellus imperdiet iaculis."
+      }},
+    {"type": "paragraph","model": {
+        "text": "Vivamus sollicitudin, diam non semper molestie, nisi nunc efficitur neque, id iaculis nibh ipsum sed quam. Etiam consequat tristique mi ac lacinia. Etiam leo nulla, faucibus et lobortis et, semper et quam. Cras vehicula quam non condimentum laoreet."
+      }}
+  ]
+};
+document.getElementById("heading3").innerHTML = json.body[0].model.text;
+document.getElementById("paragraph7").innerHTML = json.body[1].model.text;
+document.getElementById("paragraph8").innerHTML = json.body[2].model.text;
+document.getElementById("paragraph9").innerHTML = json.body[3].model.text;
+document.getElementById("paragraph10").innerHTML = json.body[4].model.text;
+document.getElementById("paragraph11").innerHTML = json.body[5].model.text;
+document.getElementById("paragraph12").innerHTML = json.body[6].model.text;
+document.getElementById("paragraph13").innerHTML = json.body[7].model.text;
+document.getElementById("paragraph14").innerHTML = json.body[8].model.text;
+</script>
+</div>
+
+<div id="Ranking" class="tabArticle">
+</br>
+</br>
+</br>
+<h1> Submit your opinion about articles you have just read! </h1>
+1st: </br>
+<input type = "radio" name="first" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit" /> Lorem ipsum dolor sit amet, consectetur adipiscing elit </br>
+<input type = "radio" name="first" value="Praesent bibendum nec velit a fringilla. Nulla facilisi" /> Praesent bibendum nec velit a fringilla. Nulla facilisi </br>
+<input type = "radio" name="first" value="Vestibulum posuere orci ullamcorper nisi porta, sit amet tempus nibh porta" /> Vestibulum posuere orci ullamcorper nisi porta, sit amet tempus nibh porta </br>
+</br>
+2nd: </br>
+<input type = "radio" name="second" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit" /> Lorem ipsum dolor sit amet, consectetur adipiscing elit </br>
+<input type = "radio" name="second" value="Praesent bibendum nec velit a fringilla. Nulla facilisi" /> Praesent bibendum nec velit a fringilla. Nulla facilisi </br>
+<input type = "radio" name="second" value="Vestibulum posuere orci ullamcorper nisi porta, sit amet tempus nibh porta" /> Vestibulum posuere orci ullamcorper nisi porta, sit amet tempus nibh porta </br>
+</br>
+3rd: </br>
+<input type = "radio" name="third" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit" /> Lorem ipsum dolor sit amet, consectetur adipiscing elit </br>
+<input type = "radio" name="third" value="Praesent bibendum nec velit a fringilla. Nulla facilisi" /> Praesent bibendum nec velit a fringilla. Nulla facilisi </br>
+<input type = "radio" name="third" value="Vestibulum posuere orci ullamcorper nisi porta, sit amet tempus nibh porta" /> Vestibulum posuere orci ullamcorper nisi porta, sit amet tempus nibh porta </br>
+</br>
+
+<input class="button" id = "submit" type="submit" value="submit" onclick='submitResult();'/>
+
+</br>
+
+<h2>Your Ranking</h2>
+<p id="result1"></p>
+<p id="result2"></p>
+<p id="result3"></p>
+
+<script type="text/javascript">
+	function submitResult(){
+		var firstArticle = document.querySelector('input[name="first"]:checked').value;
+		var secondArticle = document.querySelector('input[name="second"]:checked').value;
+		var thirdArticle = document.querySelector('input[name="third"]:checked').value;
+		
+		if (firstArticle == secondArticle){
+			alert("Please make sure you select different articles for each sections.")
+		} else if (secondArticle == thirdArticle) {
+			alert("Please make sure you select different articles for each sections.")
+		} else if (firstArticle == thirdArticle) {
+			alert("Please make sure you select different articles for each sections.")
+		} else {
+			document.getElementById("result1").innerHTML = "1st: " + firstArticle;
+			document.getElementById("result2").innerHTML = "2st: " + secondArticle;
+			document.getElementById("result3").innerHTML = "3rd: " + thirdArticle;
+			document.getElementById("submit").value = "Edit your ranking"
+		}
+	}
+</script>
+</div>
+<script>
+function openArticle(evt, articleName) {
+  var i, tabArticle, tablinks;
+  tabArticle = document.getElementsByClassName("tabArticle");
+  for (i = 0; i < tabArticle.length; i++) {
+    tabArticle[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(articleName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+function nextPage(evt, articleName, pageID) {
+  var i, tabArticle, tablinks;
+  tabArticle = document.getElementsByClassName("tabArticle");
+  for (i = 0; i < tabArticle.length; i++) {
+    tabArticle[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(pageID).style.display = "block";
+  document.getElementById(pageID) += " active";
+  //evt.currentTarget.className += " active";
+}
+
+</script>
+
+</body>
+</html>
